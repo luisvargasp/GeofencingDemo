@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mapsFragment">
+
+
+    <fragment
+        android:id="@+id/mapsFragment"
+        tools:layout="@layout/fragment_maps"
+        android:name="com.geofencing.demo.ui.google_geofencing.MapsFragment"
+        android:label="MapsFragment" >
+        <action
+            android:id="@+id/toGeofences"
+            app:destination="@id/geofencesFragment" />
+        <argument
+            android:name="geofenceEntity"
+            app:argType="com.geofencing.demo.data.GeofenceEntity"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/geofencesFragment"
+        tools:layout="@layout/fragment_geofences"
+        android:name="com.geofencing.demo.ui.google_geofencing.GeofencesFragment"
+        android:label="GeofencesFragment" >
+
+        <action
+            android:id="@+id/backToMaps"
+            app:destination="@id/mapsFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/geofencesFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
